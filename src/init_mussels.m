@@ -39,6 +39,9 @@ if (n==5)
          0 0 1 0 0 ; 
          0 1 1 0 0];
 else
+    
+    %napraviti A iz pocetnih pozicija
+    
     for i = 1 : n
         for j = 1 : n
             if (i==j)
@@ -71,19 +74,6 @@ K = 0.02;
 sigma_0 = zeros(n,n);
 c = zeros(n,n);
 
-if (n==5) 
-    sigma_0 = [ 0    0.7   0    0    0       
-                1     0    1    0    1
-                0    0.5   0   1.4   1
-                0     0    1    0    0 
-                0    0.4   1    0    0];
-            
-    c = [ 0   0.2   0   0   0 ; 
-         0.8   0   0.4  0   1 ;
-          0   0.2   0  0.6  1 ;
-          0    0   0.4  0   0 ;
-          0   0.2  0.4  0   0 ];
-else
   for i=1:n 
     delta = roundn(rand(),-1);
     for j=1:n
