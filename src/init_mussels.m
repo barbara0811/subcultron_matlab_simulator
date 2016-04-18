@@ -12,11 +12,16 @@ it = 0;
 pr = 1;
 
 %incijalizacija pozicija
+speed=zeros(3,n+1);
+
 Xo = zeros(1,n);
 Yo = zeros(1,n);
 Zo = zeros(1,n);
 
 pos_0=zeros(3,n);
+
+%set_param('model1/Brzina', 'Data', mat2str(speed));
+set_param('model1/Integrator_brzine', 'InitialCondition', mat2str([Xo; Yo; Zo]));
 
 %stvaranje matrice pozicije
     pos_0(1,:) = Xo;
