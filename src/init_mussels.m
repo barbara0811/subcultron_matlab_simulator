@@ -75,15 +75,15 @@ sigma_0 = zeros(n,n);
 c = zeros(n,n);
 
   for i=1:n 
-    delta = roundn(rand(),-1);
+    delta = round(rand(),-1);
     for j=1:n
         if Ao(j,i) == 1
-            sigma_0(j,i) = roundn(rand(),-1);    
+            sigma_0(j,i) = round(rand(),-1);    
             c(j,i) = delta;
         end
     end
   end   
-end
+
 
 %adaptation ON/OFF
 adapt = 1;
