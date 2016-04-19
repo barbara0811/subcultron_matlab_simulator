@@ -12,7 +12,7 @@ it = 0;
 pr = 1;
 
 %incijalizacija pozicija
-speed=zeros(3,n+1);
+speed=zeros(3,n);
 
 Xo = zeros(1,n);
 Yo = zeros(1,n);
