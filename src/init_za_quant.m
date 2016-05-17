@@ -28,10 +28,10 @@ if n==5
     for i = 1:n
         for j = 1:n
         %odredivanje udaljenosti izmedju musula - prvo x, y, pa z
-        distance_0 = sqrt((pos_0(1,i)-pos_0(1,j))^2 + (pos_0(2,i)-pos_0(2,j))^2+(pos_0(3,i)-pos_0(3,j))^2)
+        distance_0 = sqrt((pos_0(1,i)-pos_0(1,j))^2 + (pos_0(2,i)-pos_0(2,j))^2+(pos_0(3,i)-pos_0(3,j))^2);
         
         %provjera mogu li komunicirati
-        if distance_0 < r_0
+        if distance_0 < r_0;
             
                 %element ne komunicira sam sa sobom
                 if i == j
@@ -106,8 +106,8 @@ end
 adapt = 1;
 
 %check a spanning tree
-deg = diag(sum(A,2));
-L = deg - A;
+deg = diag(sum(A_0,2));
+L = deg - A_0;
 row_sum = sum (L,2);
 
 %V - full matrix whose columns are the corresponding eigenvectors
