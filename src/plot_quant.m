@@ -2,7 +2,7 @@ close all
 
 
 tmin = 0;
-tmax = 10;
+tmax = 20;
 
 colours = ['r','g','b','m','c','k','k'];
 z1 = [];
@@ -93,107 +93,106 @@ for i = 1 : 10 : length(t)
 end
 %}
 
-%{
+
 %% PLOTANJE KONTINUIRANOG I DISKRETIZIRANOG S 0.1
 figure
-plot(T, [z1(:,1), z2(:,1), z3(:,1), z4(:,1), z5(:,1)], T_quant01, [z1_quant01(:,1), z2_quant01(:,1), z3_quant01(:,1), z4_quant01(:,1), z5_quant01(:,1)]);
+plot(T, [z1(:,1), z2(:,1), z3(:,1), z4(:,1), z5(:,1)], T_quant01, [z1_quant01(:,1), z2_quant01(:,1), z3_quant01(:,1), z4_quant01(:,1), z5_quant01(:,1)],'LineWidth', 1.25);
 grid on 
 xlabel('t(s)')
 ylabel('povjerenje')
-title('Povjerenje prema agentu 1')
-%legend('kontinuirano', 'diskretno s 0.01', 'diskretno s 0.1', 'diskretno s 0.05')
+title('Povjerenje prema agentu 1 - usporedba kontinuiranog povjerenja i diskretiziranog s 0.1')
+legend('\zeta_{12}', '\zeta_{22}','\zeta_{32}', '\zeta_{42}','\zeta_{52}', '\zeta_{12}_q', '\zeta_{22}_q','\zeta_{32}_q', '\zeta_{42}_q','\zeta_{52}_q', 'FontSize', 8, 'Orientation', 'Horizontal', 'Location', 'South')
 axis([tmin tmax 0 1])
 %%
 
 figure
-plot(T, [z1(:,2), z2(:,2), z3(:,2), z4(:,2), z5(:,2)], T_quant01, [z1_quant01(:,2), z2_quant01(:,2), z3_quant01(:,2), z4_quant01(:,2), z5_quant01(:,2)]);
+plot(T, [z1(:,2), z2(:,2), z3(:,2), z4(:,2), z5(:,2)], T_quant01, [z1_quant01(:,2), z2_quant01(:,2), z3_quant01(:,2), z4_quant01(:,2), z5_quant01(:,2)],'LineWidth', 1.25);
 grid on 
 xlabel('t(s)')
 ylabel('povjerenje')
-title('Povjerenje prema agentu 2')
-%legend('kontinuirano', 'diskretno s 0.01', 'diskretno s 0.1', 'diskretno s 0.05')
+title('Povjerenje prema agentu 2 - usporedba kontinuiranog povjerenja i diskretiziranog s 0.1')
+legend('\zeta_{12}', '\zeta_{22}','\zeta_{32}', '\zeta_{42}','\zeta_{52}', '\zeta_{12}_q', '\zeta_{22}_q','\zeta_{32}_q', '\zeta_{42}_q','\zeta_{52}_q', 'FontSize', 8, 'Orientation', 'Horizontal', 'Location', 'South')
 axis([tmin tmax 0 1])
 
 %%
 figure
-plot(T, [z1(:,3), z2(:,3), z3(:,3), z4(:,3), z5(:,3)], T_quant01, [z1_quant01(:,3), z2_quant01(:,3), z3_quant01(:,3), z4_quant01(:,3), z5_quant01(:,3)]);
+plot(T, [z1(:,3), z2(:,3), z3(:,3), z4(:,3), z5(:,3)], T_quant01, [z1_quant01(:,3), z2_quant01(:,3), z3_quant01(:,3), z4_quant01(:,3), z5_quant01(:,3)],'LineWidth', 1.25);
 grid on 
 xlabel('t(s)')
 ylabel('povjerenje')
-title('Povjerenje prema agentu 3')
-%legend('kontinuirano', 'diskretno s 0.01', 'diskretno s 0.1', 'diskretno s 0.05')
+title('Povjerenje prema agentu 3 - usporedba kontinuiranog povjerenja i diskretiziranog s 0.1')
+legend('\zeta_{12}', '\zeta_{22}','\zeta_{32}', '\zeta_{42}','\zeta_{52}', '\zeta_{12}_q', '\zeta_{22}_q','\zeta_{32}_q', '\zeta_{42}_q','\zeta_{52}_q', 'FontSize', 8, 'Orientation', 'Horizontal', 'Location', 'South')
 axis([tmin tmax 0 1])
 
 %%
 figure
-plot(T, [z1(:,4), z2(:,4), z3(:,4), z4(:,4), z5(:,4)], T_quant01, [z1_quant01(:,4), z2_quant01(:,4), z3_quant01(:,4), z4_quant01(:,4), z5_quant01(:,4)]);
+plot(T, [z1(:,4), z2(:,4), z3(:,4), z4(:,4), z5(:,4)], T_quant01, [z1_quant01(:,4), z2_quant01(:,4), z3_quant01(:,4), z4_quant01(:,4), z5_quant01(:,4)],'LineWidth', 1.25);
 grid on 
 xlabel('t(s)')
 ylabel('povjerenje')
-title('Povjerenje prema agentu 4')
-%legend('kontinuirano', 'diskretno s 0.01', 'diskretno s 0.1', 'diskretno s 0.05')
+title('Povjerenje prema agentu 4 - usporedba kontinuiranog povjerenja i diskretiziranog s 0.1')
+legend('\zeta_{12}', '\zeta_{22}','\zeta_{32}', '\zeta_{42}','\zeta_{52}', '\zeta_{12}_q', '\zeta_{22}_q','\zeta_{32}_q', '\zeta_{42}_q','\zeta_{52}_q', 'FontSize', 8, 'Orientation', 'Horizontal', 'Location', 'South')
 axis([tmin tmax 0 1])
 
 %%
 figure
-plot(T, [z1(:,5), z2(:,5), z3(:,5), z4(:,5), z5(:,5)], T_quant01, [z1_quant01(:,5), z2_quant01(:,5), z3_quant01(:,5), z4_quant01(:,5), z5_quant01(:,5)]);
+plot(T, [z1(:,5), z2(:,5), z3(:,5), z4(:,5), z5(:,5)], T_quant01, [z1_quant01(:,5), z2_quant01(:,5), z3_quant01(:,5), z4_quant01(:,5), z5_quant01(:,5)],'LineWidth', 1.25);
 grid on 
 xlabel('t(s)')
 ylabel('povjerenje')
-title('Povjerenje prema agentu 5')
-%legend('kontinuirano', 'diskretno s 0.1', 'diskretno s 0.01')
+title('Povjerenje prema agentu 5 - usporedba kontinuiranog povjerenja i diskretiziranog s 0.1')
+legend('\zeta_{12}', '\zeta_{22}','\zeta_{32}', '\zeta_{42}','\zeta_{52}', '\zeta_{12}_q', '\zeta_{22}_q','\zeta_{32}_q', '\zeta_{42}_q','\zeta_{52}_q', 'FontSize', 8, 'Orientation', 'Horizontal', 'Location', 'South')
 axis([tmin tmax 0 1])
-%}
 
-
+%{
 %% PLOTANJE KONTINUIRANOG I DISKRETIZIRANOG S 0.25
 figure
-plot(T, [z1(:,1), z2(:,1), z3(:,1), z4(:,1), z5(:,1)], T_quant025, [z1_quant025(:,1), z2_quant025(:,1), z3_quant025(:,1), z4_quant025(:,1), z5_quant025(:,1)]);
+plot(T, [z1(:,1), z2(:,1), z3(:,1), z4(:,1), z5(:,1)], T_quant025, [z1_quant025(:,1), z2_quant025(:,1), z3_quant025(:,1), z4_quant025(:,1), z5_quant025(:,1)],'LineWidth', 1.25);
 grid on 
 xlabel('t(s)')
 ylabel('povjerenje')
-title('Povjerenje prema agentu 1')
-%legend('kontinuirano', 'diskretno s 0.01', 'diskretno s 0.1', 'diskretno s 0.05')
+title('Povjerenje prema agentu 1 - usporedba kontinuiranog povjerenja i diskretiziranog s 0.25')
+legend('\zeta_{12}', '\zeta_{22}','\zeta_{32}', '\zeta_{42}','\zeta_{52}', '\zeta_{12}_q', '\zeta_{22}_q','\zeta_{32}_q', '\zeta_{42}_q','\zeta_{52}_q', 'FontSize', 8, 'Orientation', 'Horizontal', 'Location', 'South')
 axis([tmin tmax 0 1])
 %%
 
 figure
-plot(T, [z1(:,2), z2(:,2), z3(:,2), z4(:,2), z5(:,2)], T_quant025, [z1_quant025(:,2), z2_quant025(:,2), z3_quant025(:,2), z4_quant025(:,2), z5_quant025(:,2)]);
+plot(T, [z1(:,2), z2(:,2), z3(:,2), z4(:,2), z5(:,2)], T_quant025, [z1_quant025(:,2), z2_quant025(:,2), z3_quant025(:,2), z4_quant025(:,2), z5_quant025(:,2)],'LineWidth', 1.25);
 grid on 
 xlabel('t(s)')
 ylabel('povjerenje')
-title('Povjerenje prema agentu 2')
-%legend('kontinuirano', 'diskretno s 0.01', 'diskretno s 0.1', 'diskretno s 0.05')
+title('Povjerenje prema agentu 2 - usporedba kontinuiranog povjerenja i diskretiziranog s 0.25')
+legend('\zeta_{12}', '\zeta_{22}','\zeta_{32}', '\zeta_{42}','\zeta_{52}', '\zeta_{12}_q', '\zeta_{22}_q','\zeta_{32}_q', '\zeta_{42}_q','\zeta_{52}_q', 'FontSize', 8, 'Orientation', 'Horizontal', 'Location', 'South')
 axis([tmin tmax 0 1])
 
 %%
 figure
-plot(T, [z1(:,3), z2(:,3), z3(:,3), z4(:,3), z5(:,3)], T_quant025, [z1_quant025(:,3), z2_quant025(:,3), z3_quant025(:,3), z4_quant025(:,3), z5_quant025(:,3)]);
+plot(T, [z1(:,3), z2(:,3), z3(:,3), z4(:,3), z5(:,3)], T_quant025, [z1_quant025(:,3), z2_quant025(:,3), z3_quant025(:,3), z4_quant025(:,3), z5_quant025(:,3)],'LineWidth', 1.25);
 grid on 
 xlabel('t(s)')
 ylabel('povjerenje')
-title('Povjerenje prema agentu 3')
-%legend('kontinuirano', 'diskretno s 0.01', 'diskretno s 0.1', 'diskretno s 0.05')
+title('Povjerenje prema agentu 3 - usporedba kontinuiranog povjerenja i diskretiziranog s 0.25')
+legend('\zeta_{12}', '\zeta_{22}','\zeta_{32}', '\zeta_{42}','\zeta_{52}', '\zeta_{12}_q', '\zeta_{22}_q','\zeta_{32}_q', '\zeta_{42}_q','\zeta_{52}_q', 'FontSize', 8, 'Orientation', 'Horizontal', 'Location', 'South')
 axis([tmin tmax 0 1])
 
 %%
 figure
-plot(T, [z1(:,4), z2(:,4), z3(:,4), z4(:,4), z5(:,4)], T_quant025, [z1_quant025(:,4), z2_quant025(:,4), z3_quant025(:,4), z4_quant025(:,4), z5_quant025(:,4)]);
+plot(T, [z1(:,4), z2(:,4), z3(:,4), z4(:,4), z5(:,4)], T_quant025, [z1_quant025(:,4), z2_quant025(:,4), z3_quant025(:,4), z4_quant025(:,4), z5_quant025(:,4)],'LineWidth', 1.25);
 grid on 
 xlabel('t(s)')
 ylabel('povjerenje')
-title('Povjerenje prema agentu 4')
-%legend('kontinuirano', 'diskretno s 0.01', 'diskretno s 0.1', 'diskretno s 0.05')
+title('Povjerenje prema agentu 4 - usporedba kontinuiranog povjerenja i diskretiziranog s 0.25')
+legend('\zeta_{12}', '\zeta_{22}','\zeta_{32}', '\zeta_{42}','\zeta_{52}', '\zeta_{12}_q', '\zeta_{22}_q','\zeta_{32}_q', '\zeta_{42}_q','\zeta_{52}_q', 'FontSize', 8, 'Orientation', 'Horizontal', 'Location', 'South')
 axis([tmin tmax 0 1])
 
 %%
 figure
-plot(T, [z1(:,5), z2(:,5), z3(:,5), z4(:,5), z5(:,5)], T_quant025, [z1_quant025(:,5), z2_quant025(:,5), z3_quant025(:,5), z4_quant025(:,5), z5_quant025(:,5)]);
+plot(T, [z1(:,5), z2(:,5), z3(:,5), z4(:,5), z5(:,5)], T_quant025, [z1_quant025(:,5), z2_quant025(:,5), z3_quant025(:,5), z4_quant025(:,5), z5_quant025(:,5)],'LineWidth', 1.25);
 grid on 
 xlabel('t(s)')
 ylabel('povjerenje')
-title('Povjerenje prema agentu 5')
-%legend('kontinuirano', 'diskretno s 0.1', 'diskretno s 0.01')
+title('Povjerenje prema agentu 5 - usporedba kontinuiranog povjerenja i diskretiziranog s 0.25')
+legend('\zeta_{12}', '\zeta_{22}','\zeta_{32}', '\zeta_{42}','\zeta_{52}', '\zeta_{12}_q', '\zeta_{22}_q','\zeta_{32}_q', '\zeta_{42}_q','\zeta_{52}_q', 'FontSize', 8, 'Orientation', 'Horizontal', 'Location', 'South')
 axis([tmin tmax 0 1])
 %}
 
