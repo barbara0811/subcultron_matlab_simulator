@@ -1,14 +1,7 @@
 n = 5;
 
 %adjacency matrix
-A = zeros(n,n);
-
-it = 0;
-pr = 1;
-
 A_0 = zeros(n,n);
-
-pr = 1;
 
 %incijalizacija pozicija
 speed=zeros(3,n);
