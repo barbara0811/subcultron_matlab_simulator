@@ -25,6 +25,10 @@ for i = 1 : 10 : length(t)
    % z6(k,:) = zeta(6,:,i);
    % z7(k,:) = zeta(7,:,i);
    % z8(k,:) = zeta(8,:,i);
+    T = [T; t(i)];
+end
+for i= 1:3001;
+    k=i;
     c1(k,:)=c_prom(1,:,i);
     c2(k,:)=c_prom(2,:,i);
     c3(k,:)=c_prom(3,:,i);
@@ -33,10 +37,10 @@ for i = 1 : 10 : length(t)
     a2(k,:)=A_matrica(2,:,i);
     a3(k,:)=A_matrica(3,:,i);
     a4(k,:)=A_matrica(4,:,i);
-    T = [T; t(i)];
 end
+Tplot=linspace(1,30,3001);
 tmin = 0;
-tmax =25;
+tmax =30;
 
 %%
 figure
@@ -76,7 +80,7 @@ legend('\zeta_{14}', '\zeta_{24}','\zeta_{34}', '\zeta_{44}', 'FontSize', 8, 'Or
 axis([tmin tmax 0 1])
 %%
 figure
-plot(T,[c1(:,1),c2(:,1),c3(:,1),c4(:,1)],'LineWidth', 1.25)
+plot(Tplot,[c1(:,1),c2(:,1),c3(:,1),c4(:,1)],'LineWidth', 1.25)
 grid on 
 xlabel('t(s)')
 ylabel('delta')
@@ -85,7 +89,7 @@ legend('\delta_{11}', '\delta_{21}','\delta_{31}', '\delta_{41}', 'FontSize', 8,
 axis([tmin tmax 0 1])
 %%
 figure
-plot(T,[c1(:,2),c2(:,2),c3(:,2),c4(:,2)],'LineWidth', 1.25)
+plot(Tplot,[c1(:,2),c2(:,2),c3(:,2),c4(:,2)],'LineWidth', 1.25)
 grid on 
 xlabel('t(s)')
 ylabel('delta')
@@ -94,7 +98,7 @@ legend('\delta_{12}', '\delta_{22}','\delta_{32}', '\delta_{42}', 'FontSize', 8,
 axis([tmin tmax 0 1])
 %%
 figure
-plot(T,[c1(:,3),c2(:,3),c3(:,3),c4(:,3)],'LineWidth', 1.25)
+plot(Tplot,[c1(:,3),c2(:,3),c3(:,3),c4(:,3)],'LineWidth', 1.25)
 grid on 
 xlabel('t(s)')
 ylabel('delta')
@@ -103,7 +107,7 @@ legend('\delta_{13}', '\delta_{23}','\delta_{33}', '\delta_{43}', 'FontSize', 8,
 axis([tmin tmax 0 1])
 %%
 figure
-plot(T,[c1(:,4),c2(:,4),c3(:,4),c4(:,4)],'LineWidth', 1.25)
+plot(Tplot,[c1(:,4),c2(:,4),c3(:,4),c4(:,4)],'LineWidth', 1.25)
 grid on 
 xlabel('t(s)')
 ylabel('delta')
@@ -112,7 +116,7 @@ legend('\delta_{14}', '\delta_{24}','\delta_{34}', '\delta_{44}', 'FontSize', 8,
 axis([tmin tmax 0 1])
 %%
 figure
-plot(T,[a1(:,4),a2(:,4),a3(:,4),a4(:,4)],'LineWidth', 1.25)
+plot(Tplot,[a1(:,4),a2(:,4),a3(:,4),a4(:,4)],'LineWidth', 1.25)
 grid on 
 xlabel('t(s)')
 ylabel('A')
