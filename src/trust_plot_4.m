@@ -27,7 +27,8 @@ for i = 1 : 10 : length(t)
    % z8(k,:) = zeta(8,:,i);
     T = [T; t(i)];
 end
-for i= 1:3001;
+%%
+for i= 1:length(c_prom);
     k=i;
     c1(k,:)=c_prom(1,:,i);
     c2(k,:)=c_prom(2,:,i);
@@ -38,9 +39,9 @@ for i= 1:3001;
     a3(k,:)=A_matrica(3,:,i);
     a4(k,:)=A_matrica(4,:,i);
 end
-Tplot=linspace(1,30,3001);
+Tplot=linspace(1,(length(c_prom)-1)/100,length(c_prom));
 tmin = 0;
-tmax =30;
+tmax =(length(c_prom)-1)/100;
 
 %%
 figure
@@ -113,13 +114,4 @@ xlabel('t(s)')
 ylabel('delta')
 title('Delta prema agentu 4')
 legend('\delta_{14}', '\delta_{24}','\delta_{34}', '\delta_{44}', 'FontSize', 8, 'Orientation', 'Horizontal', 'Location', 'South')
-axis([tmin tmax 0 1])
-%%
-figure
-plot(Tplot,[a1(:,4),a2(:,4),a3(:,4),a4(:,4)],'LineWidth', 1.25)
-grid on 
-xlabel('t(s)')
-ylabel('A')
-title('Susjedi prema agentu 4')
-legend('\A_{14}', '\A_{24}','\A_{34}', '\A_{44}', 'FontSize', 8, 'Orientation', 'Horizontal', 'Location', 'South')
 axis([tmin tmax 0 1])
