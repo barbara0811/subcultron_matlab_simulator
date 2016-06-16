@@ -19,7 +19,7 @@ static void mdlInitializeSizes(SimStruct *S)
     }
     
     /* the number of input ports that a block has */
-    if (!ssSetNumInputPorts(S, 7)) return;
+    if (!ssSetNumInputPorts(S, 8)) return;
 
 	/* number of agents */
     ssSetInputPortWidth(S, 0, DYNAMICALLY_SIZED);
@@ -49,7 +49,10 @@ static void mdlInitializeSizes(SimStruct *S)
 	ssSetInputPortWidth(S, 6, DYNAMICALLY_SIZED);
 	ssSetInputPortDirectFeedThrough(S, 6, 1) ;
 
-
+    /* eta -  */
+	ssSetInputPortWidth(S, 7, DYNAMICALLY_SIZED);
+	ssSetInputPortDirectFeedThrough(S, 7, 1) ;
+    
     /* the number of output ports that a block has */
     if (!ssSetNumOutputPorts(S,3)) return;
 
@@ -135,6 +138,7 @@ static void mdlOutputs(SimStruct *S, int_T tid)
 	InputRealPtrsType uPtrs4 = ssGetInputPortRealSignalPtrs(S,4);   
 	InputRealPtrsType uPtrs5 = ssGetInputPortRealSignalPtrs(S,5); 
 	InputRealPtrsType uPtrs6 = ssGetInputPortRealSignalPtrs(S,6); 
+    InputRealPtrsType uPtrs7 = ssGetInputPortRealSignalPtrs(S,7);
 	
 	real_T            *(y0) = ssGetOutputPortRealSignal(S,0);    
 	real_T			  *(y1) = ssGetOutputPortRealSignal(S,1);
