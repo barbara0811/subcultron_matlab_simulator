@@ -1,4 +1,3 @@
-
 #define S_FUNCTION_NAME  trust_n_agents
 #define S_FUNCTION_LEVEL 2
 
@@ -10,6 +9,7 @@
  * Abstract:
  *   Setup sizes of the various vectors.
  */
+
 
 static void mdlInitializeSizes(SimStruct *S)
 {
@@ -49,16 +49,18 @@ static void mdlInitializeSizes(SimStruct *S)
 	ssSetInputPortWidth(S, 6, DYNAMICALLY_SIZED);
 	ssSetInputPortDirectFeedThrough(S, 6, 1) ;
 
-    /* eta -  */
-	ssSetInputPortWidth(S, 7, DYNAMICALLY_SIZED);
-	ssSetInputPortDirectFeedThrough(S, 7, 1) ;
-    
+    /* angle between two currents */
+	ssSetInputPortMatrixDimensions(S, 7, DYNAMICALLY_SIZED, DYNAMICALLY_SIZED);
+    ssSetInputPortDirectFeedThrough(S, 7, 1);
+
+
     /* the number of output ports that a block has */
-    if (!ssSetNumOutputPorts(S,3)) return;
+    if (!ssSetNumOutputPorts(S,4)) return;
 
 	ssSetOutputPortMatrixDimensions(S, 0, DYNAMICALLY_SIZED, DYNAMICALLY_SIZED);
 	ssSetOutputPortMatrixDimensions(S, 1, DYNAMICALLY_SIZED, DYNAMICALLY_SIZED);
 	ssSetOutputPortMatrixDimensions(S, 2, DYNAMICALLY_SIZED, DYNAMICALLY_SIZED);
+    ssSetOutputPortMatrixDimensions(S, 3, DYNAMICALLY_SIZED, DYNAMICALLY_SIZED);
    
     /* specify the number of sample times that an S-Function block has */
     ssSetNumSampleTimes(S, 1);
@@ -103,6 +105,7 @@ static void mdlSetDefaultPortDimensionInfo(SimStruct *S)
 		if(!ssSetOutputPortMatrixDimensions(S, 0, dims[0], dims[0])) return;
 		if(!ssSetOutputPortMatrixDimensions(S, 1, dims[0], dims[0])) return;
 		if(!ssSetOutputPortMatrixDimensions(S, 2, dims[0], dims[0])) return;
+        if(!ssSetOutputPortMatrixDimensions(S, 3, dims[0], dims[0])) return;
 	} 
 }
 #endif /* MDL_SET_DEFAULT_PORT_DIMENSION_INFO */
@@ -130,6 +133,7 @@ int sign(real_T a) {
 static void mdlOutputs(SimStruct *S, int_T tid)
 {
     int_T             i, j, num, k, l, flag = 1;
+    real_T            v_proj;
 
 	InputRealPtrsType uPtrs0 = ssGetInputPortRealSignalPtrs(S,0);  
 	InputRealPtrsType uPtrs1 = ssGetInputPortRealSignalPtrs(S,1);  
@@ -138,19 +142,25 @@ static void mdlOutputs(SimStruct *S, int_T tid)
 	InputRealPtrsType uPtrs4 = ssGetInputPortRealSignalPtrs(S,4);   
 	InputRealPtrsType uPtrs5 = ssGetInputPortRealSignalPtrs(S,5); 
 	InputRealPtrsType uPtrs6 = ssGetInputPortRealSignalPtrs(S,6); 
-    InputRealPtrsType uPtrs7 = ssGetInputPortRealSignalPtrs(S,7);
+	InputRealPtrsType uPtrs7 = ssGetInputPortRealSignalPtrs(S,7); 
 	
 	real_T            *(y0) = ssGetOutputPortRealSignal(S,0);    
 	real_T			  *(y1) = ssGetOutputPortRealSignal(S,1);
 	real_T			  *(y2) = ssGetOutputPortRealSignal(S,2);
+    real_T            *(y3) = ssGetOutputPortRealSignal(S,3);
+    real_T a=0;
 
 	num = *uPtrs0[0];  /* number of agents */
-
+    v_proj = *uPtrs7[0];
+    
+    
 	for (i=0; i< num; i++) {
 		for (j=0; j < num; j++) {
 			(y0)[j*num + i] = 0;
 			(y1)[j*num + i] = 0;
 			(y2)[j*num + i] = 0;
+            (y3)[j*num + i] = 0;
+
 		}
 	} 
 
@@ -169,12 +179,15 @@ static void mdlOutputs(SimStruct *S, int_T tid)
 						}
 						flag = 0;
 					} 
-					(y0)[k*num + i] = (y0)[k*num +i] + (*uPtrs3[j*num + i]) * sign(*uPtrs3[k * num + j] - *uPtrs3[k * num + i]); 
-				}
+					(y0)[k*num + i] = (y0)[k*num +i] + (*uPtrs3[j*num + i]) * sign(*uPtrs3[k * num + j] - *uPtrs3[k * num + i]) - pow(((y0)[k*num +i]),2) * v_proj; 
+                    (y3)[k*num + i] = - pow(((y0)[k*num +i]),2) * v_proj;
 
+                    }
+                    
+                    
 				/* add observation-based trust value */
-				(y0)[j*num + i] = (y0)[j*num + i] + sign((y2)[j*num + i] -  *uPtrs3[j*num + i]);
-
+				(y0)[j*num + i] = (y0)[j*num + i] + sign((y2)[j*num + i] -  *uPtrs3[j*num + i])- 5*pow(((y0)[k*num +i]),2) * v_proj;
+                
 				/* adaptation law - confidence */
 				if (*uPtrs1[0] > 0)
 					(y1)[j*num + i] = - (*uPtrs6[0]) * sign((y2)[j*num + i] - *uPtrs3[j*num + i]) ;  
