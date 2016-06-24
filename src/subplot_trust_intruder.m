@@ -18,7 +18,7 @@ for i = 1 : 10 : length(t)
 end
 
 tmin = 0;
-tmax = 7;
+tmax = 30;
 
 %%
 figure

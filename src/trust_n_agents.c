@@ -53,6 +53,9 @@ static void mdlInitializeSizes(SimStruct *S)
 	ssSetInputPortMatrixDimensions(S, 7, DYNAMICALLY_SIZED, DYNAMICALLY_SIZED);
     ssSetInputPortDirectFeedThrough(S, 7, 1);
 
+    /* t - how much we will "punish" wrong agents */
+	ssSetInputPortMatrixDimensions(S, 8, DYNAMICALLY_SIZED, DYNAMICALLY_SIZED);
+    ssSetInputPortDirectFeedThrough(S, 8, 1);
 
     /* the number of output ports that a block has */
     if (!ssSetNumOutputPorts(S,4)) return;
@@ -143,15 +146,20 @@ static void mdlOutputs(SimStruct *S, int_T tid)
 	InputRealPtrsType uPtrs5 = ssGetInputPortRealSignalPtrs(S,5); 
 	InputRealPtrsType uPtrs6 = ssGetInputPortRealSignalPtrs(S,6); 
 	InputRealPtrsType uPtrs7 = ssGetInputPortRealSignalPtrs(S,7); 
+	InputRealPtrsType uPtrs8 = ssGetInputPortRealSignalPtrs(S,8); 
 	
 	real_T            *(y0) = ssGetOutputPortRealSignal(S,0);    
 	real_T			  *(y1) = ssGetOutputPortRealSignal(S,1);
 	real_T			  *(y2) = ssGetOutputPortRealSignal(S,2);
     real_T            *(y3) = ssGetOutputPortRealSignal(S,3);
     real_T a=0;
-
+    real_T f=0;
+    real_T g=0;
+    real_T t=1;
+    
 	num = *uPtrs0[0];  /* number of agents */
     v_proj = *uPtrs7[0];
+    t = *uPtrs8[0]; // how much we want to punish intruders
     
     
 	for (i=0; i< num; i++) {
@@ -179,14 +187,17 @@ static void mdlOutputs(SimStruct *S, int_T tid)
 						}
 						flag = 0;
 					} 
-					(y0)[k*num + i] = (y0)[k*num +i] + (*uPtrs3[j*num + i]) * sign(*uPtrs3[k * num + j] - *uPtrs3[k * num + i]) - pow(((y0)[k*num +i]),2) * v_proj; 
-                    (y3)[k*num + i] = - pow(((y0)[k*num +i]),2) * v_proj;
-
+					(y0)[k*num + i] = (y0)[k*num +i] + (*uPtrs3[j*num + i]) * sign(*uPtrs3[k * num + j] - *uPtrs3[k * num + i]); 
+                    f = - pow(((y0)[k*num +i]),2) * v_proj; //zauzima vrijednosti od 0 do pi
+                    g = (1 - exp(-f)) / t; //funkcija koja ide na izlaz
+             
+                    (y3)[k*num + i] = g;
+                    
                     }
                     
                     
 				/* add observation-based trust value */
-				(y0)[j*num + i] = (y0)[j*num + i] + sign((y2)[j*num + i] -  *uPtrs3[j*num + i])- 5*pow(((y0)[k*num +i]),2) * v_proj;
+				(y0)[j*num + i] = (y0)[j*num + i] + sign((y2)[j*num + i] -  *uPtrs3[j*num + i]);
                 
 				/* adaptation law - confidence */
 				if (*uPtrs1[0] > 0)
