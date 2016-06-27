@@ -10,20 +10,20 @@ pr = 1;
 %incijalizacija pozicija
 speed=zeros(3,n);
 
-r_0=1;
+r_0=5;
 X_0 = zeros(1,n);
 Y_0 = zeros(1,n);
 Z_0 = zeros(1,n);
 
-pos_0=zeros(3,n);
+%pos_0=zeros(3,n);
+
+pos_0=[1, 3, 3, 1, 2;
+       3, 3, 1, 1, 2;
+       0, 0, 0, 0, 0];
 
 %set_param('model1/Brzina', 'Data', mat2str(speed));
 %set_param('model1/Integrator_brzine', 'InitialCondition', mat2str([Xo; Yo; Zo]));
 
-%stvaranje matrice pozicije
-    pos_0(1,:) = X_0;
-    pos_0(2,:) = Y_0;
-    pos_0(3,:) = Z_0;
     
 %napraviti A iz pocetnih pozicija
     for i = 1:n
