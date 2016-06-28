@@ -1,4 +1,6 @@
 %% PLOTANJE POZICIJA AGENATA
+clc;
+close all;
 figure
 subplot(2,1,1)
 scatter(pos_0(1,:), pos_0(2,:), 'filled', 'MarkerEdgeColor',[0 .5 .5],...
@@ -11,32 +13,39 @@ xlabel('X-koordinata pozicija agenata')
 title('Prikaz rasporeda agenata u prostoru')
 grid on
 
-%% plotanje povjerenja
-z1 = [];
-z2 = [];
-z3 = [];
-z4 = [];
-z5 = [];
-T = [];
-tmin=0;
-tmax=10;
 
-for i = 1 : 10 : length(t)
-    z1 = [z1; reshape(zeta(1,:,i), 1, 5)];
-    z2 = [z2; reshape(zeta(2,:,i), 1, 5)];
-    z3 = [z3; reshape(zeta(3,:,i), 1, 5)];
-    z4 = [z4; reshape(zeta(4,:,i), 1, 5)];
-    z5 = [z5; reshape(zeta(5,:,i), 1, 5)];
-    T = [T; t(i)];
-end
+%% plotanje pozicija
+p1_x = reshape(pos(1,1,:),length(t),1);
+p1_y = reshape(pos(2,1,:),length(t),1);
+
+p2_x = reshape(pos(1,2,:),length(t),1);
+p2_y = reshape(pos(2,2,:),length(t),1);
+
+p3_x = reshape(pos(1,3,:),length(t),1);
+p3_y = reshape(pos(2,3,:),length(t),1);
+
+p4_x = reshape(pos(1,4,:),length(t),1);
+p4_y = reshape(pos(2,4,:),length(t),1);
+
+p5_x = reshape(pos(1,5,:),length(t),1);
+p5_y = reshape(pos(2,5,:),length(t),1);
 
 
-subplot(2,1,2)
-plot(T, [z1(:,1), z2(:,1), z3(:,1), z4(:,1), z5(:,1)], 'LineWidth', 2);
+subplot(1,2,1)
+plot(t, [p1_x, p2_x, p3_x, p4_x, p5_x], 'LineWidth',2)
 grid on 
 xlabel('t(s)')
-ylabel('povjerenje')
-title('Povjerenje prema agentu 1 uz r=5')
-legend('\zeta_{11}', '\zeta_{21}','\zeta_{31}', '\zeta_{41}','\zeta_{51}', 'FontSize', 8, 'Orientation', 'Horizontal', 'Location', 'South')
-axis([tmin tmax 0 1])
+ylabel('x')
+title('X-pozicija aMussels-a')
+legend('1', '2','3', '4','5', 'FontSize', 8, 'Orientation', 'Horizontal', 'Location', 'South')
+axis auto
+
+subplot(1,2,2)
+plot(t, [p1_y, p2_y, p3_y, p4_y, p5_y], 'LineWidth',2)
+grid on 
+xlabel('t(s)')
+ylabel('y')
+title('Y-pozicija aMussels-a')
+legend('1', '2','3', '4','5', 'FontSize', 8, 'Orientation', 'Horizontal', 'Location', 'South')
+axis auto
 
