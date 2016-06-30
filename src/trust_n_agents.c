@@ -198,20 +198,15 @@ static void mdlOutputs(SimStruct *S, int_T tid)
                 
                 if (v_proj != 0) { 
                             
-                        f = pow((*uPtrs3[j*num + i]), 2) * v_proj; //zauzima vrijednosti od 0 do pi
+                        f = *uPtrs3[j*num + i] * v_proj; //zauzima vrijednosti od 0 do pi
                         g = (1 - exp(-f)) / t; //funkcija koja ide na izlaz
                 }
-                    
-                    
-                    
-                    (y3)[j*num + i] = g;
-                    
-                    
-                    
+                
+                (y3)[j*num + i] = g;
                     
 				/* add observation-based trust value */
 				(y0)[j*num + i] = (y0)[j*num + i] + sign((y2)[j*num + i] -  *uPtrs3[j*num + i]) - g;
-                (y0)[j*num + i] = fmax((y0)[j*num + i], 0);
+                //(y0)[j*num + i] = max((y0)[j*num + i], 0);
                     
                 
 				/* adaptation law - confidence */
