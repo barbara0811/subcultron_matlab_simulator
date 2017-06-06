@@ -1,12 +1,35 @@
-clear all;
+clearvars -except filename;
 clc;
 
-%number of agents
-prompt = 'What is the number of agents?';
-n = input(prompt);
+try
+   xDoc = xmlread(filename);
+catch
+   error('Failed to read XML file %s.',filename);
+end
+
+n = str2num(char(xDoc.getElementsByTagName('mussel_num').item(0).getFirstChild.getData));
+
+% other params
+try
+    %acoustic comm
+    Tw=0;Td=0;
+    comm_type_string = char(xDoc.getElementsByTagName('comm_type').item(0).getFirstChild.getData);
+    switch comm_type_string
+        case 'acoustic'
+            comm_type = 2;
+            Td = str2num(xDoc.getElementsByTagName('Td').item(0).getFirstChild.getData);
+            Tw = str2num(xDoc.getElementsByTagName('Tw').item(0).getFirstChild.getData);
+        case 'bluelight'
+            comm_type = 3;
+    end
+catch
+    disp('ideal communication, fully connected graph');
+    comm_type = 1;
+end
+
 
 %adjacency matrix
-A = zeros(n,n);
+A = ones(n,n) - eye(n);
 
 %flag - first time
 flag = 1;
@@ -15,26 +38,6 @@ pr = 1;
 
 while (flag == 1)
 it = it + 1;          %number of iterations
-
-if (n==5)
-    A = [0 1 0 0 0 ;
-         1 0 1 0 1 ; 
-         0 1 0 1 1 ; 
-         0 0 1 0 0 ; 
-         0 1 1 0 0];
-else
-    for i = 1 : n
-        for j = 1 : n
-            if (i==j)
-                A(i,j) = 0;
-            else
-                A(i,j) = randi([0 1]);
-            end
-        end
-    end
-    A = double((A + A') /2 > 0);
-end
-            
 
 %initialization of trust values
 zeta_0 = zeros(n,n);
@@ -91,7 +94,7 @@ row_sum = sum (L,2);
 %D - diagonal matrix D of eigenvalues
 [V, D] = eig(L);
 D = diag(D);
-D = floor(D);
+D = round(D);
 
 number = size((find(D == 0)),1);     %number of eigenvalues = 0
 if (number == 1)
@@ -101,5 +104,4 @@ end
 if (row_sum == 0 & pr == 0 & number == 1) 
     flag = 0;
 end 
-
 end
