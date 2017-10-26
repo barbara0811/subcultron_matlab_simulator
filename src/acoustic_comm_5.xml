@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<params>
-  <mussel_num>5</mussel_num>
-  <comm_type>acoustic</comm_type>
-  <Td>1</Td>
-  <Tw>6</Tw>
-</params>
