@@ -11,3 +11,5 @@ eps = 0.1;
 x0 = [0 30 50 100];
 % comm type
 comm_type=2;
+% event based flag -- calculate only on message sent/received
+event_based=1;
