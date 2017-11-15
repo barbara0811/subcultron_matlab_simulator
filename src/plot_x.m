@@ -16,4 +16,4 @@ if conv_time ~= -1
 end
 
 legend(legendInfo)
-title(['Td ' num2str(Td) 'Tc ' num2str(calc_rate) ' , eps ' num2str(eps), ', x* = ' num2str(x.Data(end,1)) ', t* = ' num2str(conv_time)])
+title(['Td ' num2str(Td) ' , eps ' num2str(eps), ', x* = ' num2str(x.Data(end,1)) ', t* = ' num2str(conv_time)])
