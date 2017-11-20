@@ -12,7 +12,7 @@ eps = 0.1;
 % initial value of x
 x0 = [0 30 50 100];
 % comm type (1=ideal comm, 2=sequenced comm)
-comm_type=1;
+comm_type=2;
 % event based flag -- calculate only on message sent/received
 event_based=1;
 
