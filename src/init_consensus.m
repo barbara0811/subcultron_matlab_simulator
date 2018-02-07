@@ -8,16 +8,18 @@ A1 = [0 1 1 0 0;
       1 1 0 0 0;
       0 0 0 0 1;
       0 0 0 1 0];
-A1 = zeros(n);
+%A1 = zeros(n);
 % acoustics
 A2 = ones(n) - eye(n);
+%A2 = zeros(n);
 % communication period for scheduled communication
-Td1 = 2;
-Td2 = 7;
+Td1 = 0.5;
+Td2 = 5;
 % algorithm step
 eps = 0.01;
 % initial value of x
-x0 = [0 30 50 100 150];
+x0 = [100 30 50 0 150];
+%x0 = [26 26 26 125 125];
 % comm type (1=ideal comm, 2=sequenced comm)
 comm_type1=2;
 comm_type2=2;
