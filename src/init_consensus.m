@@ -13,7 +13,7 @@ A1 = [0 1 1 0 0;
 A2 = ones(n) - eye(n);
 %A2 = zeros(n);
 % communication period for scheduled communication
-Td1 = 0.5;
+Td1 = 1;
 Td2 = 5;
 % algorithm step
 eps = 0.01;

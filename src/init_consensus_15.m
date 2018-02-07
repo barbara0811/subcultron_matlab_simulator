@@ -23,10 +23,10 @@ A1 = [0 1 1 0 0 0 0 0 0 0 0 0 0 0 0;
 A2 = ones(n) - eye(n);
 %A2 = zeros(n);
 % communication period for scheduled communication
-Td1 = 0.5;
-Td2 = 5;
+Td1 = 1;
+Td2 = 10;
 % algorithm step
-eps = 0.1;
+eps = 0.05;
 % initial value of x
 x0 = [19    14   135   199   238    33   145   120     3    86    41   203    79   135    42]; 
 % round((255-0).*rand(1,n));
