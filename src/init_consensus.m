@@ -14,11 +14,11 @@ A2 = ones(n) - eye(n);
 %A2 = zeros(n);
 % communication period for scheduled communication
 Td1 = 1;
-Td2 = 5;
+Td2 = 3;
 % algorithm step
 eps = 0.01;
 % initial value of x
-x0 = [100 30 50 0 150];
+x0 = [50 30 0 100 150];
 %x0 = [26 26 26 125 125];
 % comm type (1=ideal comm, 2=sequenced comm)
 comm_type1=2;

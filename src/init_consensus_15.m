@@ -24,9 +24,9 @@ A2 = ones(n) - eye(n);
 %A2 = zeros(n);
 % communication period for scheduled communication
 Td1 = 1;
-Td2 = 10;
+Td2 = 3;
 % algorithm step
-eps = 0.05;
+eps = 0.01;
 % initial value of x
 x0 = [19    14   135   199   238    33   145   120     3    86    41   203    79   135    42]; 
 % round((255-0).*rand(1,n));
