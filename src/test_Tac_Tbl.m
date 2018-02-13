@@ -9,7 +9,7 @@ Td2_ = [1 2 3 4 5];
 
 for Td2 = Td2_
     Td2
-    for i=1:50
+    for i=1:2
         i
         x0 = x0(randperm(size(x0,2)));
         sim(model);
@@ -19,4 +19,4 @@ for Td2 = Td2_
     end
 end
 
-save('results\oscillatory behavior analysis - BL stays on\15amussels','con_times','con_values', 'Td2_');
+%save('results\oscillatory behavior analysis - BL stays on\15amussels','con_times','con_values', 'Td2_');

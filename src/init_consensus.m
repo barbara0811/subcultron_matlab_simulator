@@ -18,11 +18,10 @@ Td2 = 3;
 % algorithm step
 eps = 0.01;
 % initial value of x
-x0 = [50 30 0 100 150];
+x0 = [150 30 0 100 50];
 %x0 = [26 26 26 125 125];
 % comm type (1=ideal comm, 2=sequenced comm)
 comm_type1=2;
 comm_type2=2;
 % event based flag -- calculate only on message sent/received
 event_based=0;
-calc_rate=5;
