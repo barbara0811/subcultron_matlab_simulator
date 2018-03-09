@@ -3,11 +3,11 @@ load_system(model);
 
 con_times = [];
 con_values = [];
-eps_ = [0.01, 0.05, 0.1, 0.2, 0.25];
+eps_ = [0.01, 0.1, 0.25, 0.5];
 
 for eps=eps_
     eps
-    for i=1:50
+    for i=1:20
         i
         x0 = x0(randperm(size(x0,2)));
         sim(model);
@@ -17,4 +17,4 @@ for eps=eps_
     end
 end
 
-save('results\best eps analysis\5 amussels\test2_5amussels','con_times','con_values', 'eps_')
+save('results\eps_100agents','con_times','con_values', 'eps_', 'x0', 'n')
