@@ -11,9 +11,5 @@ for i=1:n
     hold on
 end
 
-if conv_time ~= -1
-    xlim([0 50*(ceil((conv_time+30)/50.))])
-end
-
 legend(legendInfo)
-title(['Td_{BL} ' num2str(Td1) ', Td_{ac} ' num2str(Td2) ' , eps ' num2str(eps), ', x* = ' num2str(x.Data(end,1)) ', t* = ' num2str(conv_time)])
+%title(['Td_{BL} ' num2str(Td1) ', Td_{ac} ' num2str(Td2) ' , eps ' num2str(eps), ', x* = ' num2str(x.Data(end,1)) ', t* = ' num2str(conv_time)])
