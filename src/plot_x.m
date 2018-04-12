@@ -10,6 +10,6 @@ for i=1:n
     legendInfo{i} = ['X_{' num2str(i) '}'];
     hold on
 end
-
+grid on;
 legend(legendInfo)
 %title(['Td_{BL} ' num2str(Td1) ', Td_{ac} ' num2str(Td2) ' , eps ' num2str(eps), ', x* = ' num2str(x.Data(end,1)) ', t* = ' num2str(conv_time)])
